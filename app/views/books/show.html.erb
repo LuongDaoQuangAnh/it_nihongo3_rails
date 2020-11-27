@@ -13,6 +13,14 @@
   <strong>Detail:</strong>
   <%= @book.detail %>
 </p>
+
+<h2><b>Review Book</b></h2>
+<%= form_for BookReview.new  do |f|%>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <%= f.text_area :review %><br>
+  <%= f.submit "Create book review" %>
+<% end %>
 <p>
   <% if @book.image.attached? %>
     <%= image_tag @book.image %>
